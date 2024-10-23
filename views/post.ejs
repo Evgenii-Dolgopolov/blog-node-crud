@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link rel="stylesheet" href="/stylesheets/style.css"/>
+        <title>
+            <% post.title %>
+        </title>
+    </head>
+
+    <%- include("partials/header") %>
+    </br>
+
+    <body>
+        <% if (locals.post) { %>
+            <h3> <%= post.title %></h3>
+            <p> <%= post.content %></p>
+
+            <a href="/post/<%= post.id %>/edit">Edit</a>
+
+            <form action="/delete-post/<%= post.id %>" method="POST"
+                  onsubmit="return confirm('Are you sure you want to delete this post?')">
+                <button type="submit">Delete</button>
+            </form>
+        <% } %>
+
+        </br>
+        <%- include("partials/footer") %>
+    </body>
+</html>
+
+

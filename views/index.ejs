@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link rel="stylesheet" href="stylesheets/style.css"/>
+        <title>Blog</title>
+    </head>
+
+    <%- include("partials/header") %>
+    </br>
+
+    <form action="create-post" method="POST">
+        <input type="text" placeholder="Blog title" name="title" required/>
+        <textarea type="text" placeholder="Content" name="content"></textarea>
+        <button type="submit">Publish</button>
+    </form>
+
+    <% if (locals.blogs) { %>
+        <div>
+            <% for (var i = 0; i < blogs.length; i++) { %>
+                <div class="blog-post">
+                    <a href="post/<%= blogs[i].urlSlug %>"> <%= blogs[i].title %></a>
+                </div>
+            <% } %>
+        </div>
+    <% } %>
+
+    </br>
+    <%- include("partials/footer") %>
+    </body>
+</html>
+
+

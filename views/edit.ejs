@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <link rel="stylesheet" href="/stylesheets/style.css"/>
+        <title>
+            <% post.title %>
+        </title>
+    </head>
+
+    <%- include("partials/header") %>
+    </br>
+
+    <body>
+        <% if (locals.post) { %>
+            <h3>Editing</h3>
+            <form action="/post/<%= post.id %>" method="POST">
+                <input type="text" name="title" value="<%= post.title %>" required>
+                <textarea name="content" required> <%= post.content %> </textarea>
+                <button type="submit">Save</button>
+            </form>
+            <a href="/">Cancel</a>
+        <% } %>
+
+        </br>
+        <%- include("partials/footer") %>
+    </body>
+</html>
+
+
